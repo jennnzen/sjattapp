@@ -1,18 +1,33 @@
 import React from 'react';
-import SignIn from './SignIn'
-import ChatRoom from './ChatRoom'
-import firebase from 'firebase/compat/app'
+
+import firebase from 'firebase/compat/app'; 
+import 'firebase/compat/firestore';
+import 'firebase/compat/auth';  
+import 'firebase/compat/analytics';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+
+
+import SignIn from './SignIn';
+import SignOut from './SignOut';
+import ChatRoom from './ChatRoom';
+
+
+
+// import {useCollectionData} from 'react-firebase-hooks/firestore';
 
 // import {getAuth} from 'firebase/auth';
 // import {getFirestore} from 'firebase/firestore';
-// import { initializeApp } from 'firebase/app'; 
-// import { getAnalytics } from "firebase/analytics";
+// import {initializeApp} from 'firebase/app'; 
+// import {getAnalytics} from "firebase/analytics";
 // const firebase = initializeApp();
 
-const auth = getAuth();
-const firestore = getFirestore();
+
+// import { useRef, useState } from 'react';
+// console.log(useRef)
+// console.log(useState)
+
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcaOg7oEY5ZRGBg-Mz8-lR2SNrdWL7Y5c",
@@ -29,6 +44,12 @@ firebase.initializeApp({
 })
 
 
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+export const analytics = firebase.analytics();
+
+
+
 
 function App() {
 
@@ -38,11 +59,11 @@ function App() {
     <div className='App'>
       <header>
 
-        
+        <SignOut />
       </header>
 
       <section>
-        { user ? <ChatRoom /> : <SignIn /> }
+        {user ? <ChatRoom /> : <SignIn />}
       </section>
     </div>
   )
