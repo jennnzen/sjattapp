@@ -27,7 +27,6 @@ export default function ChatRoom() {
         <div>
 
         </div>
-      
       </>
   )
 }

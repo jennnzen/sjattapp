@@ -39,16 +39,15 @@ const firebaseConfig = {
   measurementId: "G-TM0WZG3KH0"
 };
 
-firebase.initializeApp({
-  firebaseConfig
-})
+firebase.initializeApp(firebaseConfig);
+
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 export const analytics = firebase.analytics();
-
-
 
 
 function App() {
@@ -58,7 +57,6 @@ function App() {
   return (
     <div className='App'>
       <header>
-
         <SignOut />
       </header>
 
