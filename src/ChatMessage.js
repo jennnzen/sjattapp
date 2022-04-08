@@ -13,12 +13,10 @@ import 'firebase/compat/firestore';
 export default function ChatMessage(props) {
 
   const { text, uid } = props.message;
-  const { key } = props.message;
 
   return (
     <p>
       {text}
-      {key}
     </p>
   )
 }

@@ -3,17 +3,19 @@ import React from 'react';
 
 // import firebase from 'firebase/compat/app'; 
 // import 'firebase/compat/firestore';
-import { collection } from 'firebase/firestore';
-import 'firebase/compat/auth';  
-import 'firebase/compat/analytics';
+// import { collection } from 'firebase/firestore';
+// import 'firebase/compat/auth';  
+// import 'firebase/compat/analytics';
 
 // import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+
 import ChatMessage from './ChatMessage';
+import { firestore } from "./App";
 
 export default function ChatRoom() {
 
-    const messagesRef = collection('messages');
+    const messagesRef = firestore.collection('messages');
     const query = messagesRef.orderBy('createdAt').limit(25);
 
     const [messages] = useCollectionData(query, {idField: 'id'});
