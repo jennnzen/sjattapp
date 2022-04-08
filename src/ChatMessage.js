@@ -1,22 +1,21 @@
 import React from 'react';
-// import React, { useRef, useState } from 'react';
 
-// import firebase from 'firebase/compat/app'; 
-import 'firebase/compat/firestore';
-// import { collection } from 'firebase/firestore';
-// import 'firebase/compat/auth';  
-// import 'firebase/compat/analytics';
+import { auth } from './App'
 
-// import { useAuthState } from 'react-firebase-hooks/auth';
-// import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 export default function ChatMessage(props) {
 
-  const { text, uid } = props.message;
+  const { text, uid, photoURL} = props.message;
+
+  const messageClass = uid ===  auth.currentUser.uid ? 'sent' : 'received';
 
   return (
-    <p>
-      {text}
-    </p>
+    <div className={`message ${messageClass}`}>
+      <img src={photoURL} alt='userPhoto' />
+      <p>
+        {text}
+      </p>
+
+    </div>
   )
 }

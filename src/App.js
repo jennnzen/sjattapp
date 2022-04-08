@@ -10,23 +10,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
 import ChatRoom from './ChatRoom';
-
-
-
-// import {useCollectionData} from 'react-firebase-hooks/firestore';
-
-// import {getAuth} from 'firebase/auth';
-// import {getFirestore} from 'firebase/firestore';
-// import {initializeApp} from 'firebase/app'; 
-// import {getAnalytics} from "firebase/analytics";
-// const firebase = initializeApp();
-
-
-// import { useRef, useState } from 'react';
-// console.log(useRef)
-// console.log(useState)
-
-
+import shortComand from './shortComand';
 
 
 const firebaseConfig = {
@@ -59,6 +43,10 @@ function App() {
       <header>
         <SignOut />
       </header>
+
+      <div>
+        <shortComand />
+      </div>
 
       <section>
         {user ? <ChatRoom /> : <SignIn />}
