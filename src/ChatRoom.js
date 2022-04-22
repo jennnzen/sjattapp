@@ -37,19 +37,25 @@ export default function ChatRoom() {
 
     }
 
-    function copy() {
-        const el = document.createElement('input');
-        el.value = window.location.href;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-    }
+    // function copy() {
+    //     const el = document.createElement('input');
+    //     el.value = window.location.href;
+    //     document.body.appendChild(el);
+    //     el.select();
+    //     document.execCommand('copy');
+    //     document.body.removeChild(el);
+    // }
 
   return (
       <>
         <main>
             {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+
+            {/* {messages && messages.map(msg => {if (msg === 'rymd') {
+                <ShortComand key={msg.id} message={msg} />);
+            } else {
+                <ChatMessage key={msg.id} message={msg} />);
+            }} */}
 
             <div ref={dummy}></div>
 
