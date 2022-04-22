@@ -21,7 +21,7 @@ export default function ChatRoom() {
     const sendMessage = async(e) => {
         e.preventDefault();
 
-        const { uid, photoURL} = auth.currentUser;
+        const {uid, photoURL} = auth.currentUser;
 
         await messagesRef.add({
             text: formValue,
@@ -35,6 +35,15 @@ export default function ChatRoom() {
 
         dummy.current.scrollIntoView({ behavior: 'smooth' });
 
+    }
+
+    function copy() {
+        const el = document.createElement('input');
+        el.value = window.location.href;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
     }
 
   return (

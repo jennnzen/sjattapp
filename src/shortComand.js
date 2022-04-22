@@ -1,13 +1,18 @@
-import React from 'react'
+import React from 'react';
+// import ReactDOM from "react-dom";
+// import axios from "axios";
 
 
 
 
 export default function ShortComand() {
 
+    const [photo, setPhoto] = useState('')
+    const [clientId, setClientId] = useState('rmUwjdhpp6pKzYbJrlPKC43D9PfM_v6CLWCnNKDiF6M')
+
     const searchPhotos = () => {
         // console.log('click')
-        let clientId = 'rmUwjdhpp6pKzYbJrlPKC43D9PfM_v6CLWCnNKDiF6M';
+        // let clientId = 'rmUwjdhpp6pKzYbJrlPKC43D9PfM_v6CLWCnNKDiF6M';
         let query = document.getElementById('search').value;
         // console.log(query)
         let url = 'https://api.unsplash.com/search/photos/?client_id='+clientId+'&query='+query;
@@ -24,7 +29,7 @@ export default function ShortComand() {
                     <a href='${photo.links.download}'
                 `;
 
-                $('#result').html(result);
+                // $('#result').html(result);
 
                 // document.getElementById('result').innerHTML(result)
             });
@@ -42,7 +47,7 @@ export default function ShortComand() {
     return (
         <>
             <form>
-                <input type='text' id='search' placeholder='SÖK'/>
+                <input type='text' id='search' placeholder='Säk har...'/>
 
                 <button type='button' onClick={searchPhotos}>
                     OwO
