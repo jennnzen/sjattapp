@@ -14,20 +14,19 @@ export default function ShortComand() {
 
     const [result, setResult] = useState([]);
 
-    function handelChange(event) {
+    // function handelChange(event) {
+    //     setPhoto(event.target.value);
+    // }
+
+    const handelChange = (event) => {
         setPhoto(event.target.value);
-    }
+    };
 
-    function handleSubmit (event) {
+    const handleSubmit = (event) => {
         console.log(photo);
+        const page = Math.floor(Math.random() * 20);
 
-        const url = 'https://api.unsplash.com/search/photos?page=1&query='+photo+'&client_id='+clientId;
-
-
-        // axios.get(url)
-        // .then((response) => {
-        //     console.log(response)
-        // })
+        const url = 'https://api.unsplash.com/search/photos?page='+page+'&query='+photo+'&client_id='+clientId;
 
         async function getData(){
             let response = await axios.get(url);
@@ -36,65 +35,54 @@ export default function ShortComand() {
 
         }
 
-        getData()
-
-    }
-
-    // const searchPhotos = () => {
-
-    //     const [clientId, setClientId] = useState(
-    //         'rmUwjdhpp6pKzYbJrlPKC43D9PfM_v6CLWCnNKDiF6M'
-    //     );
-    //     // console.log('click')
-    //     // let clientId = 'rmUwjdhpp6pKzYbJrlPKC43D9PfM_v6CLWCnNKDiF6M';
-    //     // let query = document.getElementById('search').value;
-    //     // // console.log(query)
-    //     // let url = 'https://api.unsplash.com/search/photos/?client_id='+clientId+'&query='+query;
-    
-    //     // async function getData(){
-        
-    //     //     let response = await fetch(url)
-    //     //     let data = await response.json()
-    //     //     console.log(data)
-
-    //     //     data.results.forEach(photo => {
-    //     //         let result = `
-    //     //             <img src='${photo.urls.regular}' alt='${photo.alt_description}'>
-    //     //             <a href='${photo.links.download}'
-    //     //         `;
-
-    //     //         // $('#result').html(result);
-
-    //     //         // document.getElementById('result').innerHTML(result)
-    //     //     });
-    //     // }
-
-    //     // getData()
-    
-    //     // fetch(url)
-    //     //     .then(function (data) {
-    //     //         console.log(data);
-    //     // })
-    
-    // }
+        getData();
+        event.preventDefault();
+    };
 
     return (
-        <>
-            <form>
-                <input onChange={handelChange} type='text' id='search' placeholder='Säk har...'/>
+        null
+        // <>
+        //     <form>
+        //         <input onChange={handelChange} type='text' id='search' placeholder='Säk har...'/>
 
-                <button onClick={handleSubmit} type='button' >
-                    OwO
-                </button>
-            </form>
+        //         <button onClick={handleSubmit} type='submit' >
+        //             OwO
+        //         </button>
+        //     </form>
 
             
 
-            <div id='result'>
-                {result.map((photo) => (
-                    <img src={photo.urls.small} alt={photo.alt_description}/>
-                ))}
-            </div>
-        </>
+        //     <div id='result'>
+        //         {result.map((photo) => (
+        //             <img src={photo.urls.small} alt={photo.alt_description}/>
+        //         ))}
+        //     </div>
+        // </>
     )
 }
+
+    // function handelChange(event) {
+    //     setPhoto(event.target.value);
+    // }
+
+    // const handelChange = (event) => {
+    //     setPhoto(event.target.value);
+    // };
+
+    // const handleSubmit = (event) => {
+    //     console.log(photo);
+    //     const page = Math.floor(Math.random() * 20);
+
+    //     const url = 'https://api.unsplash.com/search/photos?page='+page+'&query='+photo+'&client_id='+clientId;
+
+    //     async function getData(){
+    //         let response = await axios.get(url);
+    //         console.log(response);
+    //         setResult(response.data.results)
+    //         console.log(response);
+
+    //     }
+
+    //     getData();
+    //     event.preventDefault();
+    // };

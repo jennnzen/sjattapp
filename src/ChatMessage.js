@@ -5,7 +5,9 @@ import { auth } from './App'
 
 export default function ChatMessage(props) {
 
-  const { text, uid, photoURL} = props.message;
+  const {text, uid, photoURL} = props.message;
+
+  // console.log({text})
 
   const messageClass = uid ===  auth.currentUser.uid ? 'sent' : 'received';
 

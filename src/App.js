@@ -10,7 +10,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
 import ChatRoom from './ChatRoom';
-import ShortComand from './ShortComand';
+// import ShortComand from './ShortComand';
 
 
 const firebaseConfig = {
@@ -41,9 +41,9 @@ function App() {
         <SignOut />
       </header>
 
-      <section>
+      {/* <section>
         <ShortComand />
-      </section>
+      </section> */}
 
       <section>
         {user ? <ChatRoom /> : <SignIn />}
