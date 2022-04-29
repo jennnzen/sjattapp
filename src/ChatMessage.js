@@ -13,7 +13,7 @@ export default function ChatMessage(props) {
 
   return (
     <div className={`message ${messageClass}`}>
-      <img src={photoURL} alt='userPhoto' />
+      <img src={photoURL} alt='{altDescription}' />
       <p>
         {text}
       </p>

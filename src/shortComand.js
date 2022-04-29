@@ -23,14 +23,12 @@ export default function ShortComand() {
     };
 
     const handleSubmit = (event) => {
-        console.log(photo);
         const page = Math.floor(Math.random() * 20);
 
         const url = 'https://api.unsplash.com/search/photos?page='+page+'&query='+photo+'&client_id='+clientId;
 
         async function getData(){
             let response = await axios.get(url);
-            console.log(response);
             setResult(response.data.results)
 
         }

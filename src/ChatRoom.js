@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState} from 'react';
 import axios from "axios";
 
 import firebase from 'firebase/compat/app'; 
@@ -26,54 +26,52 @@ export default function ChatRoom() {
 
     const [result, setResult] = useState([]);
     
-    function shortComand(formValue) {
-
+    async function shortComand(formValue) {
+        
         const page = Math.floor(Math.random() * 10);
+        const photoIndex = Math.floor(Math.random() * 10);
     
         const url = 'https://api.unsplash.com/search/photos?page='+page+'&query='+formValue+'&client_id='+clientId;
     
-        async function getData(){
-            let response = await axios.get(url);
-            console.log(response);
-            setResult(response.data.results)
-            console.log()
-            // console.log(result)
-    
-        }
-        getData();
+        let response = await axios.get(url);
 
+        
+        setResult(response.data.results[photoIndex].urls.small)
+        
+
+        
         return(null)
     
     }
+
+    
+
+
     
 
     const sendMessage = async(e) => {
         e.preventDefault();
 
         const {uid, photoURL} = auth.currentUser;
-
-        // const [clientId, setClientId] = useState(
-        //     'rmUwjdhpp6pKzYbJrlPKC43D9PfM_v6CLWCnNKDiF6M'
-        // );
-
+        
         if (formValue === "space") {
-            console.log(formValue);
-
+            
             shortComand(formValue)
-
-            // async function getResult() {
-            //     const piss = await shortComand(formValue)
-            //     console.log(piss)
-            // }
-
-            // getResult();
             console.log(result)
+            await messagesRef.add({
+                text: formValue,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                uid,
+                // altDescription: result.alt_description,
+                photoURL: result
+            })
 
         } else {
             await messagesRef.add({
                 text: formValue,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 uid,
+                altDescription: "userPhoto",
                 photoURL
             })
         }
@@ -83,6 +81,7 @@ export default function ChatRoom() {
         dummy.current.scrollIntoView({ behavior: 'smooth' });
 
     }
+
 
   return (
       <>
