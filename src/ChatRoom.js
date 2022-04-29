@@ -1,4 +1,4 @@
-import React, { useRef, useState} from 'react';
+import React, { useRef, useState, useEffect} from 'react';
 import axios from "axios";
 
 import firebase from 'firebase/compat/app'; 
@@ -25,6 +25,10 @@ export default function ChatRoom() {
     );
 
     const [result, setResult] = useState([]);
+
+    useEffect(() => {
+        shortComand("space")
+    });
     
     async function shortComand(formValue) {
         
@@ -37,17 +41,7 @@ export default function ChatRoom() {
 
         
         setResult(response.data.results[photoIndex].urls.small)
-        
-
-        
-        return(null)
-    
-    }
-
-    
-
-
-    
+    }    
 
     const sendMessage = async(e) => {
         e.preventDefault();
