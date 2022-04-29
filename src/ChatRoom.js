@@ -32,7 +32,7 @@ export default function ChatRoom() {
     
     async function shortComand(formValue) {
         
-        const page = Math.floor(Math.random() * 10);
+        const page = Math.floor(Math.random() * 100);
         const photoIndex = Math.floor(Math.random() * 10);
     
         const url = 'https://api.unsplash.com/search/photos?page='+page+'&query='+formValue+'&client_id='+clientId;
@@ -40,7 +40,7 @@ export default function ChatRoom() {
         let response = await axios.get(url);
 
         
-        setResult(response.data.results[photoIndex].urls.small)
+        setResult(response.data.results[photoIndex])
     }    
 
     const sendMessage = async(e) => {
@@ -56,8 +56,8 @@ export default function ChatRoom() {
                 text: formValue,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 uid,
-                // altDescription: result.alt_description,
-                photoURL: result
+                altDescription: result.alt_description,
+                photoURL: result.urls.small
             })
 
         } else {
@@ -82,13 +82,6 @@ export default function ChatRoom() {
         <main>
             {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
 
-            {/* {messages && messages.map(msg => {if (msg === 'rymd') {
-                    <ShortComand key={msg.id} message={msg} />
-                } else {
-                    <ChatMessage key={msg.id} message={msg} />
-                }
-            })} */}
-
             <div ref={dummy}></div>
 
         </main>
@@ -98,7 +91,7 @@ export default function ChatRoom() {
             <input value={formValue} placeholder='Sjatt' onChange={(e) => setFormValue(e.target.value)}/>
 
             <button type='submit'>
-                UwU
+               vvv 
             </button>
 
         </form>

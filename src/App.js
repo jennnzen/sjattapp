@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import firebase from 'firebase/compat/app'; 
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';  
@@ -10,7 +11,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
 import ChatRoom from './ChatRoom';
-// import ShortComand from './ShortComand';
+import './App.css';
 
 
 const firebaseConfig = {
@@ -39,6 +40,7 @@ function App() {
     <div className='App'>
       <header>
         <SignOut />
+        {/* {'Try to write "space"'} */}
       </header>
 
       {/* <section>
