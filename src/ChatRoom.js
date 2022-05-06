@@ -32,7 +32,7 @@ export default function ChatRoom() {
     
     async function shortComand(formValue) {
         
-        const page = Math.floor(Math.random() * 100);
+        const page = Math.floor(Math.random() * 50);
         const photoIndex = Math.floor(Math.random() * 10);
     
         const url = 'https://api.unsplash.com/search/photos?page='+page+'&query='+formValue+'&client_id='+clientId;

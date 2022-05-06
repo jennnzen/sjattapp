@@ -7,17 +7,25 @@ export default function ChatMessage(props) {
 
   const {text, uid, photoURL, altDescription} = props.message;
 
-  const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
-  const photoType = text === "space" ? 'spacePhoto' : 'profilePhoto';
+  // console.log(uid)
+  // console.log(auth.currentUser)
+  // console.log(auth.currentUser.uid)
+  if (auth.currentUser.uid != null) {
+    const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
-  return (
-    <div className={`message ${messageClass}`}>
-      <img className={`${photoType}`} src={photoURL} alt={altDescription} />
-      <p className={`${text}`}>
-        {text}
-      </p>
+    const photoType = text === "space" ? 'spacePhoto' : 'profilePhoto';
 
-    </div>
-  )
+    return (
+      <div className={`message ${messageClass}`}>
+        <img className={`${photoType}`} src={photoURL} alt={altDescription} />
+        <p className={`${text}`}>
+          {text}
+        </p>
+
+      </div>
+    )
+  } else {
+    return (null)
+  }
 }
