@@ -1,11 +1,10 @@
-import React, { useRef, useState, useEffect} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import axios from "axios";
 
 import firebase from 'firebase/compat/app'; 
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import ChatMessage from './ChatMessage';
-// import ShortComand from './ShortComand';
 import { auth, firestore } from "./App";
 
 
@@ -16,13 +15,11 @@ export default function ChatRoom() {
     const messagesRef = firestore.collection('messages');
     const query = messagesRef.orderBy('createdAt').limit(25);
 
-    const [messages] = useCollectionData(query, {idField: 'id'});
+    const [messages] = useCollectionData(query, {idField: 'id'}); // lyssnar på data
 
     const [formValue, setFormValue] = useState('');
 
-    const [clientId, setClientId] = useState(
-        'rmUwjdhpp6pKzYbJrlPKC43D9PfM_v6CLWCnNKDiF6M'
-    );
+    const clientId = 'rmUwjdhpp6pKzYbJrlPKC43D9PfM_v6CLWCnNKDiF6M'
 
     const [result, setResult] = useState([]);
 
@@ -48,10 +45,8 @@ export default function ChatRoom() {
 
         const {uid, photoURL} = auth.currentUser;
         
-        if (formValue === "space") {
-            
+        if (formValue === "space") {       
             shortComand(formValue)
-            console.log(result)
             await messagesRef.add({
                 text: formValue,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -83,7 +78,6 @@ export default function ChatRoom() {
             {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
 
             <div ref={dummy}></div>
-
         </main>
 
         <form onSubmit={sendMessage}>
@@ -91,9 +85,8 @@ export default function ChatRoom() {
             <input value={formValue} placeholder='Sjatt' onChange={(e) => setFormValue(e.target.value)}/>
 
             <button type='submit'>
-               vvv 
+               skriv 
             </button>
-
         </form>
       </>
   )

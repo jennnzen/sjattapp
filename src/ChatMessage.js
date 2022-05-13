@@ -7,10 +7,6 @@ export default function ChatMessage(props) {
 
   const {text, uid, photoURL, altDescription} = props.message;
 
-
-  // console.log(uid)
-  // console.log(auth.currentUser)
-  // console.log(auth.currentUser.uid)
   if (auth.currentUser.uid != null) {
     const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
@@ -22,7 +18,6 @@ export default function ChatMessage(props) {
         <p className={`${text}`}>
           {text}
         </p>
-
       </div>
     )
   } else {

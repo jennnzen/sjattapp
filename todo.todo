@@ -4,5 +4,4 @@ Fråga Gustav:
 Todo:
     ✔ När bilderna hämtas och kommit upp på sidan ska de också sparas i databasen?? @done(22-04-29 22:24)
     ✔ viod on shortcommands function @done(22-04-29 22:24)
-    ☐ ta bort komentarer och console
-    ☐ fixs så inga fula ord kan skrivas
+    ✔ ta bort komentarer och console @done(22-05-12 19:21)

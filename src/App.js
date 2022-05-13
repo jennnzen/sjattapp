@@ -1,12 +1,10 @@
 import React from 'react';
 
-
 import firebase from 'firebase/compat/app'; 
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';  
-import 'firebase/compat/analytics';
+// import 'firebase/compat/analytics';
 import { useAuthState } from 'react-firebase-hooks/auth';
-
 
 import SignIn from './SignIn';
 import SignOut from './SignOut';
@@ -29,7 +27,7 @@ firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
-export const analytics = firebase.analytics();
+// export const analytics = firebase.analytics();
 
 
 function App() {
@@ -40,12 +38,7 @@ function App() {
     <div className='App'>
       <header>
         <SignOut />
-        {/* {'Try to write "space"'} */}
       </header>
-
-      {/* <section>
-        <ShortComand />
-      </section> */}
 
       <section>
         {user ? <ChatRoom /> : <SignIn />}
